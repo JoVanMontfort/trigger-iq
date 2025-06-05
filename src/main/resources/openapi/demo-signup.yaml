@@ -1,0 +1,21 @@
+
+openapi: 3.0.1
+info:
+  title: TriggerIQ API
+  version: 1.0.0
+paths:
+  /api/signup:
+    post:
+      summary: Signup new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+      responses:
+        '200':
+          description: Signup successful
