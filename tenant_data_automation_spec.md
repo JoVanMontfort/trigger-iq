@@ -20,24 +20,24 @@ Tenants should be able to configure:
 - `ConfigDashboardComponent`
 - Subcomponents: `ApiConfigComponent`, `SurveyConfigComponent`, `UploadConfigComponent`, `WebhookConfigComponent`
 - Features:
-    - Tenant-specific view after login
-    - Dynamic form builder per data type
-    - Form validation + test data buttons
+  - Tenant-specific view after login
+  - Dynamic form builder per data type
+  - Form validation + test data buttons
 
 ### 2. Backend (Spring Boot)
 - Authentication: JWT-based multi-tenant auth
 - REST API:
-    - `GET /api/config`
-    - `POST /api/config`
-    - `PATCH /api/config/{id}`
-    - `DELETE /api/config/{id}`
+  - `GET /api/config`
+  - `POST /api/config`
+  - `PATCH /api/config/{id}`
+  - `DELETE /api/config/{id}`
 - Services:
-    - ConfigService: handles CRUD
-    - SchedulerService: polls APIs based on tenant cron jobs
-    - WebhookController: handles external push-based data
+  - ConfigService: handles CRUD
+  - SchedulerService: polls APIs based on tenant cron jobs
+  - WebhookController: handles external push-based data
 - Data:
-    - `TenantConfig` JPA Entity
-    - Postgres table with JSONB or structured columns
+  - `TenantConfig` JPA Entity
+  - Postgres table with JSONB or structured columns
 
 ---
 
@@ -94,9 +94,9 @@ graph TD
 
 - NiFi pulls config from DB via JDBC or REST
 - Listeners:
-    - ListS3 / FetchS3 for file uploads
-    - InvokeHTTP for API polling
-    - HandleHttpRequest for webhooks
+  - ListS3 / FetchS3 for file uploads
+  - InvokeHTTP for API polling
+  - HandleHttpRequest for webhooks
 - Dynamic routing using tenant_id context variable
 
 ---
