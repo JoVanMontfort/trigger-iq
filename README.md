@@ -1,125 +1,100 @@
-# 🧠 Tenant-Driven Data Automation Specification
+# 🚀 TriggerIQ
 
-This document defines the architecture and behavior of a system where each tenant can configure their own data ingestion pipelines through the TriggerIQ platform.
-
----
-
-## 📌 Overview
-
-Tenants should be able to configure:
-- Data sources (APIs, surveys, file uploads, webhooks)
-- Automation triggers (polling intervals, event-based uploads)
-- Secure access (auth headers, tokens, credentials)
-- Target formats (JSON, CSV, etc.)
+**TriggerIQ** is a scalable, multi-tenant data automation platform designed to streamline the ingestion, transformation, and routing of structured and unstructured data (e.g., surveys, APIs, uploads). It provides tenant-configurable pipelines, full backend automation, and a clean Angular-based UI.
 
 ---
 
-## 🧩 System Components
+## 🗂 Repository Structure
 
-### 1. Frontend (Angular)
-- `ConfigDashboardComponent`
-- Subcomponents: `ApiConfigComponent`, `SurveyConfigComponent`, `UploadConfigComponent`, `WebhookConfigComponent`
-- Features:
-    - Tenant-specific view after login
-    - Dynamic form builder per data type
-    - Form validation + test data buttons
+This monorepo contains **both the frontend and backend codebases**, organized by **separate Git branches** for modular development and deployment.
 
-### 2. Backend (Spring Boot)
-- Authentication: JWT-based multi-tenant auth
-- REST API:
-    - `GET /api/config`
-    - `POST /api/config`
-    - `PATCH /api/config/{id}`
-    - `DELETE /api/config/{id}`
-- Services:
-    - ConfigService: handles CRUD
-    - SchedulerService: polls APIs based on tenant cron jobs
-    - WebhookController: handles external push-based data
-- Data:
-    - `TenantConfig` JPA Entity
-    - Postgres table with JSONB or structured columns
+| Branch        | Description                        |
+|---------------|------------------------------------|
+| `main`        | Stable releases and version tags   |
+| `frontend`    | Angular 17 app (TriggerIQ UI)      |
+| `backend`     | Spring Boot 3.x REST API backend   |
+| `dev-*`       | Feature branches (WIP, hotfixes)   |
 
 ---
 
-## 🗃️ Database Schema (PostgreSQL)
+## ✨ Features
 
-```sql
-CREATE TABLE tenant_config (
-    id UUID PRIMARY KEY,
-    tenant_id UUID NOT NULL,
-    type VARCHAR(20) CHECK (type IN ('api', 'survey', 'upload', 'webhook')),
-    config JSONB NOT NULL,
-    enabled BOOLEAN DEFAULT TRUE,
-    schedule_cron VARCHAR,
-    created_at TIMESTAMP DEFAULT now(),
-    updated_at TIMESTAMP DEFAULT now()
-);
+- 🔐 **Multi-tenant configuration system**
+- ⚙️ **Dynamic API/survey/webhook ingestion**
+- 📤 **MinIO (S3-compatible) storage backend**
+- 📈 **NiFi integration for pipeline logic**
+- 🌐 **Kubernetes-ready deployment**
+- 🧩 **Microservice separation via branches**
+
+---
+
+## 🧑‍💻 Tech Stack
+
+| Layer       | Technology              |
+|-------------|--------------------------|
+| Frontend    | Angular 17, TypeScript, Tailwind |
+| Backend     | Spring Boot 3, PostgreSQL, JWT    |
+| Storage     | MinIO (S3), Optional HDFS         |
+| Data Flow   | Apache NiFi                      |
+| DevOps      | Docker, Kubernetes, Helm          |
+
+---
+
+## 🧪 Getting Started
+
+### Clone and checkout a specific branch:
+
+```bash
+# Clone the repo
+git clone https://github.com/your-org/triggeriq.git
+cd triggeriq
+
+# Checkout frontend or backend branch
+git checkout frontend     # for Angular UI
+git checkout backend      # for Spring Boot API
+```
+
+### For full-stack deployment with Docker Compose or K8s, use the `main` branch.
+
+---
+
+## 📁 Directory Structure (Per Branch)
+
+### 🔹 Frontend Branch (`frontend`)
+```
+src/
+ ├── app/
+ ├── assets/
+ └── environments/
+```
+
+### 🔹 Backend Branch (`backend`)
+```
+src/
+ └── main/
+     ├── java/com/triggeriq/
+     └── resources/
+         ├── application.yml
+         └── db/migration/
 ```
 
 ---
 
-## 🔄 Automation Flow
+## 🏗 Deployment Options
 
-```mermaid
-graph TD
-  A[Tenant Logs In] --> B[Dashboard Loads]
-  B --> C[Configures API / Survey / Upload / Webhook]
-  C --> D[Save Config (POST /api/config)]
-  D --> E[Store in DB (tenant_config table)]
-
-  E --> F[Spring Scheduler or NiFi Watches Configs]
-  F --> G1[API Polling Triggered]
-  F --> G2[Webhook Received]
-  F --> G3[MinIO File Upload Detected]
-
-  G1 --> H[Data pushed to NiFi or Processor Queue]
-  G2 --> H
-  G3 --> H
-
-  H --> I[Parse & Transform]
-  I --> J[Route to Storage or Analytics]
-```
+- Local development (with Vite and Spring DevTools)
+- Docker Compose (frontend, backend, DB, MinIO)
+- Kubernetes (Helm charts available)
 
 ---
 
-## 🔐 Security
+## 📜 License
 
-- All config access is scoped by `tenant_id` (from JWT)
-- Configs encrypted at rest (e.g., using JCE or Vault)
-- Rate limiting and validation on webhook endpoints
+MIT © [Your Organization]
 
 ---
 
-## 🧰 NiFi Integration
+## 🤝 Contributing
 
-- NiFi pulls config from DB via JDBC or REST
-- Listeners:
-    - ListS3 / FetchS3 for file uploads
-    - InvokeHTTP for API polling
-    - HandleHttpRequest for webhooks
-- Dynamic routing using tenant_id context variable
-
----
-
-## 📦 MinIO Storage Layout
-
-```
-minio/
-└── tenant-id-123/
-    ├── surveys/
-    ├── apis/
-    ├── uploads/
-    └── webhook/
-```
-
----
-
-## 🚀 Future Enhancements
-
-- UI for custom field mapping
-- Cron job validation
-- Retry/backoff strategies per config
-- Data quality checks before ingestion
-- Slack/email alerts per tenant
-
----
+Want to contribute or deploy this for your org?  
+Fork the repo, create a branch, and open a pull request.
