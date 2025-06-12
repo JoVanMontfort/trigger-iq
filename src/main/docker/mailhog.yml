@@ -1,0 +1,9 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+name: triggeriq
+services:
+  mailhog:
+    image: docker.io/mailhog/mailhog
+    container_name: mailhog
+    ports:
+      - '1025:1025' # Map container's 1025 SMTP to host's 25
+      - '8025:8025' # Web UI to view emails

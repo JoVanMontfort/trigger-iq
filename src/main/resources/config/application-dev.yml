@@ -34,7 +34,7 @@ spring:
     type: com.zaxxer.hikari.HikariDataSource
     url: jdbc:postgresql://localhost:5432/triggerIq
     username: triggerIq
-    password:
+    password: triggerIq
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -43,7 +43,7 @@ spring:
     contexts: dev, faker
   mail:
     host: localhost
-    port: 25
+    port: 1025
     username:
     password:
   messages:
@@ -52,7 +52,7 @@ spring:
     cache: false
 
 server:
-  port: 8080
+  port: 9080
   # make sure requests the proxy uri instead of the server one
   forward-headers-strategy: native
 

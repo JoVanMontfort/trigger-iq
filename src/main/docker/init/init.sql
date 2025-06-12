@@ -1,0 +1,2 @@
+CREATE ROLE "triggerIq" WITH LOGIN;
+CREATE DATABASE triggerIq OWNER "triggerIq";

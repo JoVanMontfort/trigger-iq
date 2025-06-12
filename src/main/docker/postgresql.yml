@@ -1,19 +1,40 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
 name: triggeriq
 services:
-  postgresql:
-    image: postgres:17.2
-    # volumes:
-    #   - ~/volumes/jhipster/triggerIq/postgresql/:/var/lib/postgresql/data/
+  postgres:
+    image: docker.io/library/postgres:17.2
+    container_name: postgres-db
+    ports:
+      - '5432:5432'
     environment:
-      - POSTGRES_USER=triggerIq
-      - POSTGRES_HOST_AUTH_METHOD=trust
+      POSTGRES_DB: triggerIq
+      POSTGRES_USER: triggerIq
+      POSTGRES_PASSWORD: triggerIq
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U $${POSTGRES_USER}']
       interval: 5s
       timeout: 5s
       retries: 10
-    # If you want to expose these ports outside your dev PC,
-    # remove the "127.0.0.1:" prefix
-    ports:
-      - 127.0.0.1:5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init:/docker-entrypoint-initdb.d # ✅ mount SQL init scripts
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+#services:
+#  postgres:
+#    image: docker.io/library/postgres:17.2
+#    container_name: postgres-db
+#    ports:
+#      - "5432:5432"
+#    environment:
+#      POSTGRES_USER: devuser                     # required dummy superuser
+#      POSTGRES_HOST_AUTH_METHOD: trust          # ✅ allows password-less access (dev only)
+#    volumes:
+#      - pgdata:/var/lib/postgresql/data
+#      - ./init:/docker-entrypoint-initdb.d      # ✅ mount SQL init scripts
+#    restart: unless-stopped
+#
+#volumes:
+#  pgdata:
