@@ -33,14 +33,17 @@
               "src/main/webapp/content",
               "src/main/webapp/favicon.ico",
               "src/main/webapp/manifest.webapp",
-              "src/main/webapp/robots.txt"
+              "src/main/webapp/robots.txt",
+              "src/main/webapp/content/webfonts"
             ],
             "styles": [
               "src/main/webapp/content/scss/vendor.scss",
               "src/main/webapp/content/scss/global.scss",
-              "src/main/webapp/content/css/styles.css"
+              "src/main/webapp/content/css/styles.css",
+              "src/main/webapp/content/fontawesome/all.css",
+              "src/main/webapp/content/css/tailwind.css"
             ],
-            "scripts": []
+            "scripts": ["node_modules/particles.js/particles.js"]
           },
           "configurations": {
             "production": {

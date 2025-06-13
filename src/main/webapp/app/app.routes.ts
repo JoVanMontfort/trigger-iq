@@ -10,6 +10,12 @@ const routes: Routes = [
     path: '',
     loadComponent: () => import('./home/home.component'),
     title: 'home.title',
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./home/landing/landing.component').then(m => m.LandingComponent),
+      },
+    ],
   },
   {
     path: '',

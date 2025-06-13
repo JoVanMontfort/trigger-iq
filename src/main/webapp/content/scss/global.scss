@@ -44,6 +44,10 @@ Generic styles
   padding: 1.5%;
   margin-top: 20px;
   border: none;
+  background-image: url('/content/images/starry-sky-1.jpeg');
+  background-size: cover; /* This will make sure the image covers the whole card */
+  background-position: center center; /* Centers the image within the card */
+  background-repeat: no-repeat; /* Ensures the image doesn't repeat */
 }
 
 .error {
