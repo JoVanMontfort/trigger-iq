@@ -1,7 +1,7 @@
 # This configuration is intended for development purpose, it's **your** responsibility to harden it for production
 name: triggeriq
 services:
-  postgres:
+  postgresql:
     image: docker.io/library/postgres:17.2
     container_name: postgres-db
     ports:

@@ -8,11 +8,15 @@ services:
       - SPRING_PROFILES_ACTIVE=prod,api-docs
       - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/triggerIq
+      - SPRING_DATASOURCE_USERNAME=triggerIq
+      - SPRING_DATASOURCE_PASSWORD=triggerIq
       - SPRING_LIQUIBASE_URL=jdbc:postgresql://postgresql:5432/triggerIq
+      - SPRING_LIQUIBASE_USER=triggerIq
+      - SPRING_LIQUIBASE_PASSWORD=triggerIq
       - JHIPSTER_CACHE_REDIS_SERVER=redis://redis:6379
       - JHIPSTER_CACHE_REDIS_CLUSTER=false
     ports:
-      - 127.0.0.1:8080:8080
+      - 127.0.0.1:8081:8080
     healthcheck:
       test:
         - CMD
@@ -33,3 +37,7 @@ services:
     extends:
       file: ./redis.yml
       service: redis
+
+volumes:
+  redis_data:
+  pgdata:
