@@ -2,7 +2,7 @@ name: Jib Build and Push to GHCR
 
 on:
   push:
-    branches: [main]
+    branches: [18-landing-page-ui]
   workflow_dispatch:
 
 permissions:
