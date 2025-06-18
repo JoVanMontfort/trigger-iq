@@ -630,9 +630,14 @@
                                 </platform>
                             </platforms>
                         </from>
-                        <to>
-                            <image>triggeriq:latest</image>
-                        </to>
+                      <to>
+                        <!--                            <image>triggeriq:latest</image>-->
+                        <image>ghcr.io/jovanmontfort/triggeriq</image>
+                        <auth>
+                          <username>${env.GITHUB_ACTOR}</username>
+                          <password>${env.GITHUB_TOKEN}</password>
+                        </auth>
+                      </to>
                         <container>
                             <entrypoint>
                                 <shell>bash</shell>
