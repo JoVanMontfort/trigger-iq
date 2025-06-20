@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ingress-nginx
+  annotations:
+    kompose.cmd: kompose convert -f app.yml -o k8s/
+    kompose.version: 1.31.2 (a92241f79)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: triggeriq
+  name: triggeriq
+spec:
+  ports:
+    - name: "http"
+      port: 8081        # This is the external service port
+      targetPort: 8080   # This should match the container's internal port
+  selector:
+    io.kompose.service: triggeriq
+  type: ClusterIP       # Use ClusterIP for internal cluster communication (could use LoadBalancer if externally accessible)
