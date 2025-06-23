@@ -108,6 +108,11 @@ a {
   background-color: #00bcd4;
 }
 
+/* in your styles.css */
+.drop-shadow-glow {
+  filter: drop-shadow(0 0 6px #0ff);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .grid-3 {

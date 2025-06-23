@@ -82,6 +82,10 @@ jhipster:
     allow-credentials: true
     max-age: 1800
   security:
+    content-security-policy: default-src 'self';
+      script-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
     authentication:
       jwt:
         # This token must be encoded using Base64 and be at least 256 bits long (you can type `openssl rand -base64 64` on your command line to generate a 512 bits one)

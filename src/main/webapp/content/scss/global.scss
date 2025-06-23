@@ -211,4 +211,26 @@ angular-cli removes postcss-rtl processed inline css, processed rules must be ad
     }
   }
 }
+
+/* Tailwind-compatible custom hover underline glow */
+.hover-underline-glow {
+  position: relative;
+}
+
+.hover-underline-glow::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #00ffff, #d946ef);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.hover-underline-glow:hover::after {
+  opacity: 1;
+}
+
 /* jhipster-needle-scss-add-main JHipster will add new css style */
