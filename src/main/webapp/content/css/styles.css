@@ -114,8 +114,3 @@ a {
     grid-template-columns: 1fr;
   }
 }
-
-/* Optional: custom styles */
-html {
-  scroll-behavior: smooth;
-}
