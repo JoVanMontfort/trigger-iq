@@ -24,6 +24,14 @@ management:
     metrics:
       export:
         enabled: false
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
 
 spring:
   devtools:

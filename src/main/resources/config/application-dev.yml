@@ -51,6 +51,16 @@ spring:
   thymeleaf:
     cache: false
 
+management:
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+
 server:
   port: 9080
   # make sure requests the proxy uri instead of the server one
