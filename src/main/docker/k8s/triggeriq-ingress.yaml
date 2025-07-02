@@ -5,8 +5,13 @@ metadata:
   namespace: ingress-nginx
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"  # If you don't have SSL configured yet
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/ingress.class: nginx
 spec:
+  tls:
+    - hosts:
+        - triggeriq.eu
+      secretName: triggeriq-tls  # Cert-Manager will create this
   rules:
     - host: triggeriq.eu
       http:
@@ -17,4 +22,4 @@ spec:
               service:
                 name: triggeriq
                 port:
-                  number: 8081   # Ensure this matches the port your service is exposing
+                  number: 8081

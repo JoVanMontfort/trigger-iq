@@ -57,4 +57,6 @@ kubectl get pods -n kube-system | grep ebs
 aws eks describe-addon --cluster-name my-cluster --addon-name aws-ebs-csi-driver --region eu-west-3
 
 kubectl debug -it ebs-csi-controller-6fc859c6d7-2lgsd -n kube-system --image=busybox --target=ebs-plugin --share-processes
+
+kubectl annotate ingress triggeriq-ingress -n ingress-nginx cert-manager.io/cluster-issuer- --overwrite
 ```
