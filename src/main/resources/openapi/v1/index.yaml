@@ -1,0 +1,32 @@
+openapi: 3.0.1
+info:
+  title: TriggerIQ Sentiment API
+  version: 1.0.0
+  description: API for managing user sentiment data.
+
+paths:
+  /users/{userId}/sentiment:
+    $ref: ./paths/users/user-sentiment.yaml
+
+components:
+  schemas:
+    SentimentResult:
+      $ref: ./components/schemas/SentimentResult.yaml
+    UserProfile:
+      $ref: ./components/schemas/UserProfile.yaml
+
+  parameters:
+    userId:
+      $ref: ./components/parameters/userId.yaml
+
+  responses:
+    200:
+      $ref: ./components/responses/200.yaml
+    400:
+      $ref: ./components/responses/400.yaml
+    404:
+      $ref: ./components/responses/404.yaml
+
+  requestBodies:
+    SentimentRequest:
+      $ref: ./components/requestBodies/SentimentRequest.yaml
