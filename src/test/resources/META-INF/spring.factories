@@ -1,0 +1,4 @@
+org.springframework.test.context.ContextCustomizerFactory = \
+    damnosol.triggeriq.app.config.\
+    SqlTestContainersSpringContextCustomizerFactory,damnosol.triggeriq.app.config.\
+    RedisTestContainersSpringContextCustomizerFactory

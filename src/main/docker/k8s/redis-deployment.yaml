@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ingress-nginx
+  annotations:
+    kompose.cmd: kompose convert -f app.yml -o k8s/
+    kompose.version: 1.31.2 (a92241f79)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: redis
+  name: redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: redis
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f app.yml -o k8s/
+        kompose.version: 1.31.2 (a92241f79)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/triggeriq-default: "true"
+        io.kompose.service: redis
+    spec:
+      containers:
+        - image: docker.io/library/redis:7
+          name: redis-local
+          ports:
+            - containerPort: 6379
+              hostPort: 6379
+              protocol: TCP
+          resources: {}
+          volumeMounts:
+            - mountPath: /data
+              name: redis-data
+      restartPolicy: Always
+      volumes:
+        - name: redis-data
+          persistentVolumeClaim:
+            claimName: redis-data
+status: {}

@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    image: ghcr.io/jovanmontfort/triggeriq:latest # Use image from GitHub Container Registry
+    environment:
+      - _JAVA_OPTIONS=-Xmx512m -Xms256m
+      - SPRING_PROFILES_ACTIVE=prod,api-docs
+      - MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED=true
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/triggerIq
+      - SPRING_DATASOURCE_USERNAME=triggerIq
+      - SPRING_DATASOURCE_PASSWORD=triggerIq
+      - SPRING_LIQUIBASE_URL=jdbc:postgresql://postgresql:5432/triggerIq
+      - SPRING_LIQUIBASE_USER=triggerIq
+      - SPRING_LIQUIBASE_PASSWORD=triggerIq
+      - JHIPSTER_CACHE_REDIS_SERVER=redis://redis:6379
+      - JHIPSTER_CACHE_REDIS_CLUSTER=false
+    ports:
+      - 127.0.0.1:8081:8080
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - -f
+        - http://localhost:8080/management/health
+      interval: 5s
+      timeout: 5s
+      retries: 40
+    depends_on:
+      postgresql:
+        condition: service_healthy
+  postgresql:
+    extends:
+      file: ./postgresql.yml
+      service: postgresql
+  redis:
+    extends:
+      file: ./redis.yml
+      service: redis
+
+volumes:
+  redis_data:
+  pgdata:

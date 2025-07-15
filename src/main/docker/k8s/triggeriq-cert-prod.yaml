@@ -1,0 +1,13 @@
+# triggeriq-cert-prod.yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: triggeriq-tls
+  namespace: ingress-nginx
+spec:
+  secretName: triggeriq-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+  dnsNames:
+    - triggeriq.eu

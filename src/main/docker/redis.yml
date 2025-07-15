@@ -1,0 +1,14 @@
+# This configuration is intended for development purpose, it's **your** responsibility to harden it for production
+name: triggeriq
+services:
+  redis:
+    image: docker.io/library/redis:7
+    container_name: redis-local
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+volumes:
+  redis_data:

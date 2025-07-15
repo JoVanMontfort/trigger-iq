@@ -1,0 +1,81 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ingress-nginx
+  annotations:
+    kompose.cmd: kompose convert -f app.yml -o k8s/
+    kompose.version: 1.31.2 (a92241f79)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: triggeriq
+  name: triggeriq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: triggeriq
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f app.yml -o k8s/
+        kompose.version: 1.31.2 (a92241f79)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/triggeriq-default: "true"
+        io.kompose.service: triggeriq
+    spec:
+      imagePullSecrets:
+        - name: ghcr-secret
+      containers:
+        - env:
+            - name: JHIPSTER_CACHE_REDIS_CLUSTER
+              value: "false"
+            - name: JHIPSTER_CACHE_REDIS_SERVER
+              value: redis://redis.ingress-nginx.svc.cluster.local:6379
+            - name: MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED
+              value: "true"
+            - name: SPRING_DATASOURCE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pg-secret
+                  key: password
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgresql:5432/triggerIq
+            - name: SPRING_DATASOURCE_USERNAME
+              value: triggerIq
+            - name: SPRING_LIQUIBASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pg-secret
+                  key: password
+            - name: SPRING_LIQUIBASE_URL
+              value: jdbc:postgresql://postgresql:5432/triggerIq
+            - name: SPRING_LIQUIBASE_USER
+              value: triggerIq
+            - name: SPRING_PROFILES_ACTIVE
+              value: prod,api-docs
+            - name: _JAVA_OPTIONS
+              value: -Xmx512m -Xms256m
+          image: ghcr.io/jovanmontfort/triggeriq:latest
+          livenessProbe:
+            exec:
+              command:
+                - curl
+                - -f
+                - http://localhost:8080/management/health
+            failureThreshold: 40
+            periodSeconds: 5
+            timeoutSeconds: 5
+          name: triggeriq
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+            limits:
+              memory: "1024Mi"
+              cpu: "500m"
+      restartPolicy: Always

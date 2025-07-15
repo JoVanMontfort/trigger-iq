@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  namespace: ingress-nginx
+  creationTimestamp: null
+  labels:
+    io.kompose.service: postgresql-claim0
+  name: postgresql-claim0
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: gp2-csi
+status: {}

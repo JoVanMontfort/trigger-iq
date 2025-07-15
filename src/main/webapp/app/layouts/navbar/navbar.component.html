@@ -1,0 +1,44 @@
+<!-- 🌈 Pride Banner -->
+<div
+  class="bg-gradient-to-r from-pink-500 via-yellow-400 via-green-400 via-blue-500 to-purple-600 text-black text-sm font-exo text-center py-2 px-4 shadow-md"
+>
+  🌈 Celebrating Pride Month — Inclusivity fuels innovation.
+</div>
+
+<!-- 🧭 Tomorrowland-style Navbar -->
+<nav data-cy="navbar" class="fixed top-0 w-full z-50 backdrop-blur-md bg-black/60 text-white px-6 py-4 shadow-md font-michroma">
+  <div class="max-w-7xl mx-auto flex items-center justify-between w-full">
+    <!-- Left: Logo -->
+    <a class="flex items-center" routerLink="/" (click)="collapseNavbar()">
+      <img src="content/images/TriggerIQ-logo.svg" alt="TriggerIQ Logo" class="h-16 md:h-20 mr-2 invert drop-shadow-glow" />
+      <span class="text-xl md:text-2xl font-orbitron text-cyan-400 hover:text-white transition-all">
+        Trigger<span class="text-purple-400">IQ</span>
+      </span>
+    </a>
+
+    <!-- Center: Navbar Links -->
+    <div class="hidden md:flex gap-8 text-sm font-exo text-white/80 items-center justify-center flex-1">
+      <a routerLink="/" (click)="collapseNavbar()" class="hover:text-pink-400 transition">Home</a>
+      <a routerLink="/features" (click)="collapseNavbar()" class="hover:text-cyan-300 transition">Features</a>
+      <a routerLink="/how-it-works" (click)="collapseNavbar()" class="hover:text-violet-300 transition">How It Works</a>
+      <a routerLink="/contact" (click)="collapseNavbar()" class="hover:text-yellow-400 transition">Contact</a>
+    </div>
+
+    <!-- Right: CTAs -->
+    <div class="flex items-center space-x-3">
+      <a
+        routerLink="/onboarding"
+        class="hidden md:inline-block px-5 py-2 bg-cyan-400 text-black rounded-full hover:brightness-110 transition-all shadow-lg"
+      >
+        Get Started
+      </a>
+
+      <button
+        routerLink="/login-options"
+        class="px-4 py-2 font-michroma text-neonBlue border border-neonBlue rounded-full hover:bg-neonBlue/10 transition-all"
+      >
+        Login
+      </button>
+    </div>
+  </div>
+</nav>
