@@ -1,3 +1,4 @@
+<!-- Hero Section -->
 <section
   class="min-h-screen bg-gradient-to-br from-space to-black text-white px-6 py-20 flex flex-col items-center justify-center text-center max-w-7xl mx-auto"
 >
@@ -22,7 +23,11 @@
     >
       Start Listening Now
     </button>
-    <button class="px-6 py-3 font-michroma border border-neonBlue text-neonBlue rounded-full hover:bg-neonBlue/10 transition-all">
+
+    <button
+      (click)="scrollTo('how-it-works')"
+      class="px-6 py-3 font-michroma border border-neonBlue text-neonBlue rounded-full hover:bg-neonBlue/10 transition-all"
+    >
       Explore How It Works
     </button>
   </div>
@@ -43,6 +48,33 @@
       <i class="fas fa-shield-alt text-4xl text-pulsePurple mb-4"></i>
       <h3 class="text-xl font-bold font-orbitron text-white">Private & Secure</h3>
       <p class="text-white/70 mt-2 font-exo">All data is processed with privacy and encryption by default.</p>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works Section (scroll target) -->
+<section id="how-it-works" class="pt-32 pb-20 bg-black text-white text-center">
+  <h2 class="text-4xl md:text-5xl font-orbitron text-neonBlue mb-6">How It Works</h2>
+  <p class="max-w-3xl mx-auto text-white/70 font-exo text-lg">
+    TriggerIQ listens to customer interactions in real-time, detects emotions, urgency, tone and silence, and turns them into actionable
+    insights.
+  </p>
+
+  <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+    <div class="p-6 border border-white/10 rounded-xl bg-white/5 backdrop-blur-md">
+      <i class="fas fa-microphone-alt text-4xl text-neonPink mb-4"></i>
+      <h3 class="text-xl font-bold font-orbitron text-white">Listen Smart</h3>
+      <p class="text-white/70 mt-2 font-exo">Capture real-time conversations, emails, support chats, and more.</p>
+    </div>
+    <div class="p-6 border border-white/10 rounded-xl bg-white/5 backdrop-blur-md">
+      <i class="fas fa-heartbeat text-4xl text-neonBlue mb-4"></i>
+      <h3 class="text-xl font-bold font-orbitron text-white">Decode Emotion</h3>
+      <p class="text-white/70 mt-2 font-exo">AI extracts tone, urgency, and emotional signals with high precision.</p>
+    </div>
+    <div class="p-6 border border-white/10 rounded-xl bg-white/5 backdrop-blur-md">
+      <i class="fas fa-chart-line text-4xl text-pulsePurple mb-4"></i>
+      <h3 class="text-xl font-bold font-orbitron text-white">Drive Action</h3>
+      <p class="text-white/70 mt-2 font-exo">Send insights to dashboards or trigger automations instantly.</p>
     </div>
   </div>
 </section>
