@@ -92,6 +92,35 @@ jhipster:
     allow-credentials: true
     max-age: 1800
   security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: YOUR_GOOGLE_CLIENT_ID
+            client-secret: YOUR_GOOGLE_CLIENT_SECRET
+            scope: profile, email
+            redirect-uri: '{baseUrl}/login/oauth2/code/google'
+          github:
+            client-id: YOUR_GITHUB_CLIENT_ID
+            client-secret: YOUR_GITHUB_CLIENT_SECRET
+            scope: read:user,user:email
+            redirect-uri: '{baseUrl}/login/oauth2/code/github'
+          facebook:
+            client-id: YOUR_FACEBOOK_CLIENT_ID
+            client-secret: YOUR_FACEBOOK_CLIENT_SECRET
+            scope: public_profile,email
+            redirect-uri: '{baseUrl}/login/oauth2/code/facebook'
+          linkedin:
+            client-id: YOUR_LINKEDIN_CLIENT_ID
+            client-secret: YOUR_LINKEDIN_CLIENT_SECRET
+            scope: r_liteprofile,r_emailaddress
+            redirect-uri: '{baseUrl}/login/oauth2/code/linkedin'
+        provider:
+          linkedin:
+            authorization-uri: https://www.linkedin.com/oauth/v2/authorization
+            token-uri: https://www.linkedin.com/oauth/v2/accessToken
+            user-info-uri: https://api.linkedin.com/v2/me
+            user-name-attribute: id
     content-security-policy: default-src 'self';
       script-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
