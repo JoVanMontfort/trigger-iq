@@ -1,0 +1,47 @@
+<section
+  class="min-h-screen bg-gradient-to-br from-space to-black text-white px-6 py-20 flex flex-col items-center justify-center text-center max-w-7xl mx-auto"
+>
+  <h1
+    class="text-5xl md:text-6xl font-orbitron font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-neonBlue via-pulsePurple to-neonPink drop-shadow-[0_0_15px_#00FFFF]"
+  >
+    Decode Emotions. Drive Decisions.
+  </h1>
+
+  <p class="mt-6 text-lg font-exo text-white/80 max-w-2xl">
+    Your customers are speaking — through feedback, tone, urgency, and silence. TriggerIQ translates sentiment into real-time intelligence.
+  </p>
+
+  <div class="mt-10 space-x-4">
+    <button
+      (click)="loginWithGoogle()"
+      class="px-6 py-3 font-michroma text-black bg-neonBlue rounded-full hover:brightness-125 transition-all drop-shadow-lg"
+    >
+      <i class="fab fa-google mr-2"></i> Sign up with Google
+    </button>
+    <button
+      routerLink="/login"
+      class="px-6 py-3 font-michroma border border-neonBlue text-neonBlue rounded-full hover:bg-neonBlue/10 transition-all"
+    >
+      Sign in with Email
+    </button>
+  </div>
+
+  <!-- Optional: Membership teaser -->
+  <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl w-full">
+    <div class="p-6 border border-white/10 rounded-xl bg-white/5 backdrop-blur-md">
+      <h3 class="text-2xl font-orbitron text-neonBlue mb-4">Free Member</h3>
+      <ul class="font-exo text-white/80 space-y-1">
+        <li>✔️ Standard Dashboard</li>
+        <li>✔️ Community Access</li>
+      </ul>
+    </div>
+    <div class="p-6 border border-white/10 rounded-xl bg-gradient-to-br from-neonBlue to-neonPink backdrop-blur-md">
+      <h3 class="text-2xl font-orbitron text-white mb-4">Premium Member</h3>
+      <ul class="font-exo text-white space-y-1">
+        <li>💎 Custom Dashboards</li>
+        <li>🔌 3rd Party Integrations</li>
+        <li>🧠 Advanced AI Insights</li>
+      </ul>
+    </div>
+  </div>
+</section>
