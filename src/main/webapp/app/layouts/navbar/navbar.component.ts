@@ -60,7 +60,7 @@ export default class NavbarComponent implements OnInit {
   }
 
   login(): void {
-    this.router.navigate(['/login']);
+    window.location.href = 'oauth2/authorization/google';
   }
 
   logout(): void {
