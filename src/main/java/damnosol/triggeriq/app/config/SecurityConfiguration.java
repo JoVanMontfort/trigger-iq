@@ -85,7 +85,12 @@ public class SecurityConfiguration {
                     .authenticationEntryPoint(new BearerTokenAuthenticationEntryPoint())
                     .accessDeniedHandler(new BearerTokenAccessDeniedHandler())
             )
-            .oauth2ResourceServer(oauth2 -> oauth2.jwt(withDefaults()));
+            .oauth2ResourceServer(oauth2 -> oauth2.jwt(withDefaults()))
+            .oauth2Login(oauth2 ->
+                oauth2
+                    .defaultSuccessUrl("/", true) // or your custom dashboard
+                    .failureUrl("/login?error=true")
+            );
         return http.build();
     }
 
