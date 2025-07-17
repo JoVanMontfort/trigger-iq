@@ -6,6 +6,8 @@ import { UserRouteAccessService } from 'app/core/auth/user-route-access.service'
 import { errorRoute } from './layouts/error/error.route';
 import { OnboardingComponent } from './onboarding/onboarding.component';
 import { LoginOptionsComponent } from './login-options/login-options.component';
+import { FreeDashboardLayoutComponent } from './layouts/free-dashboard/free-dashboard-layout.component';
+import { FreeDashboardComponent } from './dashboard/free/free-dashboard.component';
 
 const routes: Routes = [
   {
@@ -52,6 +54,11 @@ const routes: Routes = [
   {
     path: 'login-options',
     component: LoginOptionsComponent,
+  },
+  {
+    path: 'dashboard/free',
+    component: FreeDashboardLayoutComponent,
+    children: [{ path: '', component: FreeDashboardComponent }],
   },
   ...errorRoute,
 ];
