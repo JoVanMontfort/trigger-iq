@@ -3,6 +3,8 @@ version: '3.8'
 services:
   app:
     image: ghcr.io/jovanmontfort/triggeriq:latest # Use image from GitHub Container Registry
+    env_file:
+      - .env
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,api-docs
