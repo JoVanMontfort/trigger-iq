@@ -1,25 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { LoggingService } from '../logging.service';
 
 @Component({
   selector: 'jhi-upgrade-cta-card',
   templateUrl: './upgrade-cta-card.component.html',
+  imports: [CommonModule],
 })
 export class UpgradeCtaCardComponent implements OnInit {
   showBanner = true;
   showCard = false;
 
+  constructor(private logger: LoggingService) {}
+
   ngOnInit(): void {
-    console.log('UpgradeCtaCardComponent loaded. Banner shown:', this.showBanner);
+    this.logger.log('UpgradeCtaCardComponent loaded. Banner shown: ' + String(this.showBanner));
   }
 
   openCard(): void {
-    console.log('Opening card...');
+    this.logger.log('Opening card...');
     this.showBanner = false;
     this.showCard = true;
   }
 
   closeCard(): void {
-    console.log('Closing card...');
+    this.logger.log('Closing card...');
     this.showCard = false;
   }
 }
