@@ -14,6 +14,6 @@ export class FdHeaderComponent {
 
   logout(): void {
     this.authenticationService.logout(); // clear tokens/session
-    this.router.navigate(['/login']); // redirect to login page
+    this.router.navigate(['/login-options']); // redirect to login page
   }
 }

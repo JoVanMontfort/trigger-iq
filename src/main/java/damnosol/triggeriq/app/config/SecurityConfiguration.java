@@ -88,7 +88,7 @@ public class SecurityConfiguration {
             .oauth2ResourceServer(oauth2 -> oauth2.jwt(withDefaults()))
             .oauth2Login(oauth2 ->
                 oauth2
-                    .defaultSuccessUrl("/", true) // or your custom dashboard
+                    .defaultSuccessUrl("/dashboard/free", true) // or your custom dashboard
                     .failureUrl("/login?error=true")
             );
         return http.build();
