@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ingress-nginx
+  name: mailhog
+  labels:
+    app: mailhog
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mailhog
+  template:
+    metadata:
+      labels:
+        app: mailhog
+    spec:
+      containers:
+        - name: mailhog
+          image: mailhog/mailhog:latest
+          ports:
+            - containerPort: 25 # Expose SMTP port (MailHog's default SMTP port)
+            - containerPort: 8025 # Expose Web UI port
+          env:
+            - name: MH_UI_BIND_ADDR
+              value: "0.0.0.0:8025" # Allow external access to the web UI
