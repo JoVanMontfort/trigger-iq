@@ -5,13 +5,13 @@ metadata:
   namespace: ingress-nginx
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/ssl-redirect: 'true'
     kubernetes.io/ingress.class: nginx
 spec:
   tls:
     - hosts:
         - triggeriq.eu
-      secretName: triggeriq-tls  # Cert-Manager will create this
+      secretName: triggeriq-tls # Cert-Manager will create this
   rules:
     - host: triggeriq.eu
       http:

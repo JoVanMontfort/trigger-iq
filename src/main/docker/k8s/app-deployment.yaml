@@ -14,7 +14,7 @@ spec:
   selector:
     matchLabels:
       io.kompose.service: triggeriq
-  strategy: { }
+  strategy: {}
   template:
     metadata:
       annotations:
@@ -22,7 +22,7 @@ spec:
         kompose.version: 1.31.2 (a92241f79)
       creationTimestamp: null
       labels:
-        io.kompose.network/triggeriq-default: "true"
+        io.kompose.network/triggeriq-default: 'true'
         io.kompose.service: triggeriq
     spec:
       imagePullSecrets:
@@ -30,11 +30,11 @@ spec:
       containers:
         - env:
             - name: JHIPSTER_CACHE_REDIS_CLUSTER
-              value: "false"
+              value: 'false'
             - name: JHIPSTER_CACHE_REDIS_SERVER
               value: redis://redis.ingress-nginx.svc.cluster.local:6379
             - name: MANAGEMENT_PROMETHEUS_METRICS_EXPORT_ENABLED
-              value: "true"
+              value: 'true'
             - name: SPRING_DATASOURCE_PASSWORD
               valueFrom:
                 secretKeyRef:
@@ -60,15 +60,15 @@ spec:
             - name: SPRING_MAIL_HOST
               value: mailhog.ingress-nginx.svc.cluster.local
             - name: SPRING_MAIL_PORT
-              value: "1025"
+              value: '1025'
             - name: SPRING_MAIL_USERNAME
-              value: ""
+              value: ''
             - name: SPRING_MAIL_PASSWORD
-              value: ""
+              value: ''
             - name: SPRING_MAIL_SMTP_AUTH
-              value: "false"
+              value: 'false'
             - name: SPRING_MAIL_SMTP_STARTTLS_ENABLE
-              value: "false"
+              value: 'false'
             - name: GOOGLE_CLIENT_ID
               valueFrom:
                 secretKeyRef:
@@ -95,9 +95,9 @@ spec:
               protocol: TCP
           resources:
             requests:
-              memory: "512Mi"
-              cpu: "250m"
+              memory: '512Mi'
+              cpu: '250m'
             limits:
-              memory: "1024Mi"
-              cpu: "500m"
+              memory: '1024Mi'
+              cpu: '500m'
       restartPolicy: Always

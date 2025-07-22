@@ -6,7 +6,7 @@ metadata:
   labels:
     k8s-app: kube-dns
 spec:
-  clusterIP: 172.20.0.10  # 👈 Explicitly set the expected ClusterIP
+  clusterIP: 172.20.0.10 # 👈 Explicitly set the expected ClusterIP
   selector:
     k8s-app: kube-dns
   ports:

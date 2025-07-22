@@ -4,4 +4,4 @@ required: true
 description: The ID of the user.
 schema:
   type: string
-  example: "abc-123"
+  example: 'abc-123'

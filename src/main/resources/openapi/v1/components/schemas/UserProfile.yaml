@@ -2,17 +2,17 @@ type: object
 properties:
   userId:
     type: string
-    example: "abc-123"
+    example: 'abc-123'
   name:
     type: string
-    example: "Jane Doe"
+    example: 'Jane Doe'
   email:
     type: string
-    example: "jane.doe@example.com"
+    example: 'jane.doe@example.com'
   createdAt:
     type: string
     format: date-time
-    example: "2025-01-01T10:00:00Z"
+    example: '2025-01-01T10:00:00Z'
   sentimentHistory:
     type: array
     items:

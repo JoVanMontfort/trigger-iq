@@ -2,11 +2,11 @@ type: object
 properties:
   id:
     type: string
-    example: "sentiment-456"
+    example: 'sentiment-456'
   timestamp:
     type: string
     format: date-time
-    example: "2025-07-13T09:00:00Z"
+    example: '2025-07-13T09:00:00Z'
   score:
     type: number
     format: float
@@ -18,14 +18,14 @@ properties:
   label:
     type: string
     enum: [positive, neutral, negative]
-    example: "positive"
+    example: 'positive'
   source:
     type: string
-    example: "feedback_form"
+    example: 'feedback_form'
   origin:
     type: string
     enum: [user, system]
-    example: "user"
+    example: 'user'
   isUserSubmitted:
     type: boolean
     example: true

@@ -23,4 +23,4 @@ spec:
             - containerPort: 8025 # Expose Web UI port
           env:
             - name: MH_UI_BIND_ADDR
-              value: "0.0.0.0:8025" # Allow external access to the web UI
+              value: '0.0.0.0:8025' # Allow external access to the web UI

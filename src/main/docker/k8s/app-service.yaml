@@ -11,9 +11,9 @@ metadata:
   name: triggeriq
 spec:
   ports:
-    - name: "http"
-      port: 8081        # This is the external service port
-      targetPort: 8080   # This should match the container's internal port
+    - name: 'http'
+      port: 8081 # This is the external service port
+      targetPort: 8080 # This should match the container's internal port
   selector:
     io.kompose.service: triggeriq
-  type: ClusterIP       # Use ClusterIP for internal cluster communication (could use LoadBalancer if externally accessible)
+  type: ClusterIP # Use ClusterIP for internal cluster communication (could use LoadBalancer if externally accessible)

@@ -5,12 +5,12 @@ metadata:
   namespace: kube-system
 spec:
   serviceAccountName: ebs-csi-controller-sa
-  dnsPolicy: "None"
+  dnsPolicy: 'None'
   dnsConfig:
     nameservers:
-      - 172.20.128.94     # CoreDNS service IP
-#      - 8.8.8.8           # Google DNS
-#      - 8.8.4.4           # Google DNS backup
+      - 172.20.128.94 # CoreDNS service IP
+    #      - 8.8.8.8           # Google DNS
+    #      - 8.8.4.4           # Google DNS backup
     searches:
       - kube-system.svc.cluster.local
       - svc.cluster.local
@@ -18,7 +18,7 @@ spec:
   containers:
     - name: alpine-tools
       image: alpine:3.15
-      command: [ "/bin/sh", "-c" ]
+      command: ['/bin/sh', '-c']
       args:
         - |
           ping -c 3 8.8.8.8;

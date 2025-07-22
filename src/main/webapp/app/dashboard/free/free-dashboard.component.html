@@ -1,6 +1,49 @@
-<div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-  <div class="p-4 bg-white rounded-lg shadow">📊 Sample Widget</div>
-  <div class="p-4 bg-white rounded-lg shadow">📈 Another Widget</div>
-</div>
+<div class="bg-gradient-to-br from-purple-700 via-pink-600 to-red-500 p-10 rounded-2xl shadow-2xl text-white">
+  <!-- Header Section -->
+  <h1 class="text-5xl text-center font-extrabold mb-12 tracking-wide drop-shadow-lg">✨ Welcome to Your Free Dashboard ✨</h1>
 
-<jhi-upgrade-cta-card class="mt-6"></jhi-upgrade-cta-card>
+  <!-- Loading Indicator -->
+  <div *ngIf="isLoading" class="text-center text-gray-200 text-lg my-10">⏳ Loading your insights...</div>
+
+  <!-- Chart Grid -->
+  <div *ngIf="!isLoading" class="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
+    <!-- Customer Sentiment Trend -->
+    <div class="bg-white text-gray-900 rounded-xl shadow-lg p-6 transform hover:scale-[1.01] transition duration-300 ease-in-out">
+      <h2 class="text-2xl font-bold mb-4 text-purple-700 flex items-center gap-2">📈 Customer Sentiment Trend</h2>
+      <div class="h-[700px]">
+        <canvas
+          #sentimentChart
+          baseChart
+          [data]="sentimentChartData"
+          [options]="chartOptions"
+          [type]="'line'"
+          class="w-full h-full"
+        ></canvas>
+      </div>
+    </div>
+
+    <!-- Sustainability Keyword Frequency -->
+    <div class="bg-white text-gray-900 rounded-xl shadow-lg p-6 transform hover:scale-[1.01] transition duration-300 ease-in-out">
+      <h2 class="text-2xl font-bold mb-4 text-purple-700 flex items-center gap-2">📊 Sustainability Keyword Frequency</h2>
+      <div class="h-[700px]">
+        <canvas #keywordChart baseChart [data]="keywordChartData" [type]="'bar'" class="w-full h-full"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upgrade CTA -->
+  <div class="mt-12 text-center">
+    <jhi-upgrade-cta-card
+      class="inline-block w-full max-w-xl p-8 bg-gradient-to-r from-purple-800 via-fuchsia-600 to-pink-500 rounded-2xl shadow-xl"
+    >
+      <h3 class="text-white text-2xl font-semibold mb-2">🚀 Unlock More Features</h3>
+      <p class="text-white mb-6">Upgrade to access powerful analytics, export tools, and deeper insights into your customer data.</p>
+      <a
+        href="#"
+        class="inline-block bg-white text-purple-800 font-bold py-3 px-6 rounded-full hover:bg-gray-200 transition duration-300 ease-in-out"
+      >
+        Upgrade Now
+      </a>
+    </jhi-upgrade-cta-card>
+  </div>
+</div>

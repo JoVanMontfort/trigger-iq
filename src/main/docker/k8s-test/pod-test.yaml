@@ -6,8 +6,8 @@ spec:
   containers:
     - name: busybox
       image: busybox
-      command: ["/bin/sh"]
-      args: ["-c", "while true; do echo 'Hello from EBS' >> /data/out.txt; sleep 5; done"]
+      command: ['/bin/sh']
+      args: ['-c', "while true; do echo 'Hello from EBS' >> /data/out.txt; sleep 5; done"]
       volumeMounts:
         - mountPath: /data
           name: test-volume
