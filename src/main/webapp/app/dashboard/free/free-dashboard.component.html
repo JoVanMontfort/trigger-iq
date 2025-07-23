@@ -30,7 +30,7 @@
         <span class="text-xl">📊</span> Sustainability Keyword Frequency
       </h2>
       <div class="w-full min-h-[300px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[600px]">
-        <canvas #keywordChart baseChart [data]="keywordChartData" [type]="'bar'" class="w-full h-full"></canvas>
+        <canvas #keywordChart baseChart [data]="keywordChartData" [options]="chartOptions" [type]="'bar'" class="w-full h-full"></canvas>
       </div>
     </div>
 
