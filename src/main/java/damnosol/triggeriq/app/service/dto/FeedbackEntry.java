@@ -1,3 +1,6 @@
 package damnosol.triggeriq.app.service.dto;
 
-public record FeedbackEntry(String comment, String sentiment) {}
+import java.time.Instant;
+import java.util.List;
+
+public record FeedbackEntry(String comment, String sentiment, Instant timestamp, List<String> matchedKeywords) {}
