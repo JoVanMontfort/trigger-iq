@@ -10,11 +10,13 @@ import { AlertComponent } from './alert/alert.component';
 import { AlertErrorComponent } from './alert/alert-error.component';
 import { NgChartsModule } from 'ng2-charts';
 
+import { MascotChatComponent } from './mascot-chat/mascot-chat.component';
+
 /**
  * Application wide Module
  */
 @NgModule({
-  imports: [AlertComponent, AlertErrorComponent, FindLanguageFromKeyPipe, TranslateDirective, NgChartsModule],
+  imports: [AlertComponent, AlertErrorComponent, FindLanguageFromKeyPipe, TranslateDirective, NgChartsModule, MascotChatComponent],
   exports: [
     CommonModule,
     NgbModule,
@@ -24,6 +26,7 @@ import { NgChartsModule } from 'ng2-charts';
     TranslateModule,
     FindLanguageFromKeyPipe,
     TranslateDirective,
+    MascotChatComponent,
   ],
 })
 export default class SharedModule {}

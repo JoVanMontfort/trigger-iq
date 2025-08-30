@@ -1,0 +1,16 @@
+<div class="chat-wrapper">
+  <div class="chat-bubble">
+    <div class="chat-header">
+      <img src="content/images/robot-mascot.png" alt="TriggerIQ Mascot" class="mascot" />
+      <h3 class="chat-title">TriggerIQ AI Host</h3>
+    </div>
+
+    <div class="messages">
+      <div *ngFor="let msg of messages" [ngClass]="msg.sender">
+        {{ msg.text }}
+      </div>
+    </div>
+
+    <input type="text" placeholder="Type something..." class="chat-input" [(ngModel)]="userInput" (keyup.enter)="sendMessage()" />
+  </div>
+</div>
